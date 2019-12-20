@@ -24,7 +24,6 @@ exports.createCar = async function(key, make, model, color, owner) {
     try {
 
         var response = {};
-        console.log('we here in createCar')
 
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), '/wallet');
@@ -93,8 +92,7 @@ exports.changeCarOwner = async function(key, newOwner) {
 
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
-        console.log('before gateway connect')
-        console.log(ccp)
+   
         await gateway.connect(connectionFile, { wallet, identity: userName, discovery: gatewayDiscovery });
 
         // Get the network (channel) our contract is deployed to.
