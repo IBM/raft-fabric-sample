@@ -111,6 +111,9 @@ One last thing we have to do to clean previous cryptographic certificates on our
 you want to continue, type in `y`: 
 
 ```
+
+first-network$ docker network prune
+
 WARNING! This will remove all local volumes not used by at least one container.
 Are you sure you want to continue? [y/N] y
 Total reclaimed space: 0B
