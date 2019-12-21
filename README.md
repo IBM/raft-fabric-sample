@@ -212,7 +212,44 @@ raft-fabric-samples$ cd web-app/server/
 server$ npm install
 ```
 
-## Step 4. Start the Fabcar web-app
+## Step 4. Create a cryptographic identity
+The last thing we need to do is to add a reference to our private keys from our Org1 and Org2 of our application, so that we can 
+prove to the network that we are allowed to transact on the network by proving our keys have been generated from a valid certificate 
+authority. In step 1, when we did the `./byfn.sh generate -o etcdraft` command, we actually created certificates for org1.example.com and org2.example.com which are the organizations that are managing and creating certificates for the peer nodes. 
+
+Run the following script from the server folder to assign and change the `connection.yaml` file with the 
+correct private keys for our two organizations.
+
+```
+server$ ./updateKeystore.sh
+```
+
+You should see something like:
+
+```
+printing keystore for Org1
+Admin@org1.example.com/msp/keystore/22267becaaa439c0953f95f95af3fd6847ca5f5e19cbd33703caaecc48655cd5_sk
+updating connection.yaml Org1 adminPrivateKey path with Admin@org1.example.com/msp/keystore/22267becaaa439c0953f95f95af3fd6847ca5f5e19cbd33703caaecc48655cd5_sk
+updating connection.yaml Org2 adminPrivateKey path with Admin@org2.example.com/msp/keystore/88d540642e9ddaa51985db76e47c3d0ac72123be91e0f49c1ff9b3f9277b9376_sk
+```
+ 
+The script changes to line 
+
+`path: ../../first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/` to point to the correct private
+key that is created from our cryptogen tool in our `/bin` folder. 
+
+Next, let's run the `enrollAdmin.js` script to create an identity from our certificate authority and store 
+that in our wallet, locally in the `server` directory.
+
+```
+server$ node enrollAdmin.js 
+msg: Successfully enrolled admin user admin and imported it into the wallet
+```
+
+Nice job! We're ready to start the app now :)
+
+
+## Step 5. Start the Fabcar web-app
 
 Once the dependencies are installed, in the two separate windows, run the following command to start the Angular app, and the Node.js server.
 
@@ -257,17 +294,25 @@ You should see the following output:
 [nodemon] starting `node src/app.js`
 ```
 
-## Step 5. Add reference to cryptographic keys
-The last thing we need to do is to add a reference to our private keys from our Org1 and Org2 of our application, so that we can 
-prove to the network that we are allowed to transact on the network by proving our keys have been generated from a valid certificate 
-authority. In step 1, when we did the `./byfn.sh generate -o etcdraft` command, we actually created certificates for org1.example.com and org2.example.com which are the organizations that are managing and creating certificates for the peer nodes. 
+Go ahead and go to localhost:4200 in the browser of your choice to interact with the app. The app 
+should automatically refresh and have cars shown as shown in the picture below:
 
-Run the following script from the server folder to assign and change the `connection.yaml` file with the 
-correct private keys for our two organizations. Remember to save the file after you run the script!
+<br>
+<p align="center">
+  <img src="docs/images/fabcar.png">
+</p>
+<br>
+
+
+If all goes well, you should see the following output in your Express server:
 
 ```
-server$ ./updateKeystore.sh
+Wallet path: /Users/Horea.Porutiu@ibm.com/Workdir/testDir/testDec21/raft-fabric-samples2/web-app/server/wallet
+Transaction has been evaluated, result is: [{"Key":"CAR0","Record":{"color":"blue","make":"Toyota","model":"Prius","owner":"Tomoko","docType":"car"}},{"Key":"CAR1","Record":{"color":"red","make":"Ford","model":"Mustang","owner":"Brad","docType":"car"}},{"Key":"CAR2","Record":{"color":"green","make":"Hyundai","model":"Tucson","owner":"Jin Soo","docType":"car"}},{"Key":"CAR3","Record":{"color":"yellow","make":"Volkswagen","model":"Passat","owner":"Max","docType":"car"}},{"Key":"CAR4","Record":{"color":"black","make":"Tesla","model":"S","owner":"Adriana","docType":"car"}},{"Key":"CAR5","Record":{"color":"purple","make":"Peugeot","model":"205","owner":"Michel","docType":"car"}},{"Key":"CAR6","Record":{"color":"white","make":"Chery","model":"S22L","owner":"Aarav","docType":"car"}},{"Key":"CAR7","Record":{"color":"violet","make":"Fiat","model":"Punto","owner":"Pari","docType":"car"}},{"Key":"CAR8","Record":{"color":"indigo","make":"Tata","model":"Nano","owner":"Valeria","docType":"car"}},{"Key":"CAR9","Record":{"color":"brown","make":"Holden","model":"Barina","owner":"Shotaro","docType":"car"}}]
+::1 - - [21/Dec/2019:04:54:03 +0000] "GET /queryAllCars HTTP/1.1" 200 1063 "http://localhost:4200/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
 ```
+
+
 
 
 ## Conclusion
