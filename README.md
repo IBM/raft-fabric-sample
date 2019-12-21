@@ -134,6 +134,7 @@ The output will look something like this:
 Generating certs and genesis block for channel 'mychannel' with CLI timeout of '10' seconds and CLI delay of '3' seconds
 Continue? [Y/n] y
 proceeding ...
+
 /Users/Horea.Porutiu@ibm.com/Workdir/testDir/testDec20/raft-fabric-samples2/first-network/../bin/cryptogen
 
 ##########################################################
@@ -159,6 +160,8 @@ Starting for channel 'mychannel' with CLI timeout of '10' seconds and CLI delay 
 Continue? [Y/n] y
 proceeding ...
 
+LOCAL_VERSION=1.4.4
+DOCKER_IMAGE_VERSION=1.4.4
 ...
 
 ===================== Chaincode is installed on peer0.org2 ===================== 
