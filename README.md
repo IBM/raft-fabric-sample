@@ -107,7 +107,7 @@ Deleted: sha256:b916c69c9c1b01e46ef92ac6568900138ae0b84bde36d0755d69f6257bc5aad6
 Deleted: sha256:f8386c6e7763a2ab8917d57912b3df0fc37cb844338900313a7c5eb6164de7ea
 ```
 
-One last thing we have to do to clean previous cryptographic certificates on our system is the following command. Note when asked if
+Next, we clean the previous cryptographic certificates on our system is the following command. Note when asked if
 you want to continue, type in `y`: 
 
 ```
@@ -117,6 +117,14 @@ first-network$ docker network prune
 WARNING! This will remove all local volumes not used by at least one container.
 Are you sure you want to continue? [y/N] y
 Total reclaimed space: 0B
+```
+
+The last thing we need to do if you ran this app before is clean up our previous 
+credentials from the wallet directory. Go ahead and delete the wallet from the 
+`web-app/server` directory:
+
+```
+server$ rm -rf wallet/
 ```
 
 ## Step 3. Generate cryptographic material
@@ -213,9 +221,10 @@ server$ npm install
 ```
 
 ## Step 4. Create a cryptographic identity
-The last thing we need to do is to add a reference to our private keys from our Org1 and Org2 of our application, so that we can 
-prove to the network that we are allowed to transact on the network by proving our keys have been generated from a valid certificate 
-authority. In step 1, when we did the `./byfn.sh generate -o etcdraft` command, we actually created certificates for org1.example.com and org2.example.com which are the organizations that are managing and creating certificates for the peer nodes. 
+Next, we need to add a reference to our private keys for our Org1 and Org2 of our application, so that we can 
+prove to the network that our keys have been generated from a valid certificate 
+authority. In step 1, from the `./byfn.sh generate -o etcdraft` command, we created certificates for org1.example.com and org2.example.com which are the organizations that are managing and creating certificates for the peer nodes. These certificates are 
+stored in our `crypto-config` directory.
 
 Run the following script from the server folder to assign and change the `connection.yaml` file with the 
 correct private keys for our two organizations.
@@ -233,16 +242,17 @@ updating connection.yaml Org1 adminPrivateKey path with Admin@org1.example.com/m
 updating connection.yaml Org2 adminPrivateKey path with Admin@org2.example.com/msp/keystore/88d540642e9ddaa51985db76e47c3d0ac72123be91e0f49c1ff9b3f9277b9376_sk
 ```
  
-The script changes to line 
-
-`path: ../../first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/` to point to the correct private
-key that is created from our cryptogen tool in our `/bin` folder. 
+The script changes the following [line](https://github.com/horeaporutiu/raft-fabric-samples2/blob/master/web-app/server/connection.yaml#L42). It changes The adminPrivateKey path for Org2 as well.
 
 Next, let's run the `enrollAdmin.js` script to create an identity from our certificate authority and store 
 that in our wallet, locally in the `server` directory.
 
 ```
 server$ node enrollAdmin.js 
+```
+
+You should see something like the following:
+```
 msg: Successfully enrolled admin user admin and imported it into the wallet
 ```
 
