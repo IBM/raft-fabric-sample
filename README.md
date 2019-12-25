@@ -1,8 +1,16 @@
  🚧🚨*This code pattern uses only open-source technologies. There is no need for an IBM Cloud account or any paid services.*🚧🚨
 
 # Build and run a decentralized multi-node ordering service using raft consensus on Hyperledger Fabric
+
+<br>
+<p align="center">
+  <img src="docs/gifs/fabcarDemo.gif">
+</p>
+<br>
+
 A repo to demonstrate how to build and submit transactions to a five-node ordering service running 
-on the (crash fault tolerant) Raft consensus protocol.
+on the (crash fault tolerant) Raft consensus protocol. This repo makes use of the Fabcar 
+chaincode and UI. 
 
 With the new [Hyperledger Fabric v1.4.1 release](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html), you now have the ability to deploy a truly decentralized, crash fault tolerant (CFT) ordering service. Not only that, but since the raft implementation of Hyperledger Fabric is developed by the 
 Hyperledger community, this means that you can get support on the implementation of your (raft-based) ordering nodes. Before, 
@@ -55,6 +63,7 @@ a Red Hat OpenShift cluster. The operator creates a network onto the IBM Blockch
 
 ## Featured technologies
 + [Hyperledger Fabric v1.4.4](https://hyperledger-fabric.readthedocs.io) is a platform for distributed ledger solutions, underpinned by a modular architecture that delivers high degrees of confidentiality, resiliency, flexibility, and scalability.
++ [Docker](https://www.docker.com/) Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels..
 
 ## Prerequisites
 
@@ -244,7 +253,7 @@ updating connection.yaml Org2 adminPrivateKey path with Admin@org2.example.com/m
  
 The script changes the following [line](https://github.com/horeaporutiu/raft-fabric-samples2/blob/master/web-app/server/connection.yaml#L42). It changes The adminPrivateKey path for Org2 as well.
 
-Next, let's run the `enrollAdmin.js` script to create an identity from our certificate authority and store 
+Next, let's run the [enrollAdmin.js](https://github.com/horeaporutiu/raft-fabric-samples2/blob/master/web-app/server/enrollAdmin.js) script to create an identity from our certificate authority and store 
 that in our wallet, locally in the `server` directory.
 
 ```
