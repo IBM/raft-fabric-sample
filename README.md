@@ -2,15 +2,17 @@
 
 # Build and run a decentralized multi-node ordering service using raft consensus on Hyperledger Fabric
 
+This project demonstrates how to build and submit transactions to a five-node ordering service running 
+on the (crash fault tolerant) Raft consensus protocol. This repo makes use of the Fabcar 
+chaincode and UI (shown in the gif below).
+
 <br>
 <p align="center">
   <img src="docs/gifs/fabcarDemo.gif">
 </p>
 <br>
 
-A repo to demonstrate how to build and submit transactions to a five-node ordering service running 
-on the (crash fault tolerant) Raft consensus protocol. This repo makes use of the Fabcar 
-chaincode and UI. You can see that this repo will build five ordering nodes, as shown below:
+The five-node ordering service is made up of five separate docker containers, as shown below:
 
 <br>
 <p align="center">
@@ -19,14 +21,21 @@ chaincode and UI. You can see that this repo will build five ordering nodes, as 
 <br>
 
 After you submit these transactions, you can see the raft consensus protocol in action by 
-reading the logs from the ordering node containers. For example, we will inspect the 
-orderer node 1 to see 
+reading the logs from the ordering node containers. For example, the logs from node 1 are 
+shown below. First, we can see that a Heartbeat message was received, thus making node 1 
+a follower in the present term. Next, you can see the leader is changed to node 5. Lastly,
+you can see a block is being written to the ledger channel.
 
 <br>
 <p align="center">
   <img src="docs/images/raftLogs.png">
 </p>
 <br>
+
+To see raft in action, we can submit a transaction to the Fabcar UI while the docker logs 
+are running. 
+
+![sdf](https://user-images.githubusercontent.com/10428517/71459965-b2e54380-275e-11ea-9015-4701f8810909.gif)
 
 With the new [Hyperledger Fabric v1.4.1 release](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html), you now have the ability to deploy a truly decentralized, crash fault tolerant (CFT) ordering service. Not only that, but since the raft implementation of Hyperledger Fabric is developed by the 
 Hyperledger community, this means that you can get support on the implementation of your (raft-based) ordering nodes. Before, 
