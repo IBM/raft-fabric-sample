@@ -10,7 +10,23 @@
 
 A repo to demonstrate how to build and submit transactions to a five-node ordering service running 
 on the (crash fault tolerant) Raft consensus protocol. This repo makes use of the Fabcar 
-chaincode and UI. 
+chaincode and UI. You can see that this repo will build five ordering nodes, as shown below:
+
+<br>
+<p align="center">
+  <img src="docs/images/dockerOutput.png">
+</p>
+<br>
+
+After you submit these transactions, you can see the raft consensus protocol in action by 
+reading the logs from the ordering node containers. For example, we will inspect the 
+orderer node 1 to see 
+
+<br>
+<p align="center">
+  <img src="docs/images/raftLogs.png">
+</p>
+<br>
 
 With the new [Hyperledger Fabric v1.4.1 release](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html), you now have the ability to deploy a truly decentralized, crash fault tolerant (CFT) ordering service. Not only that, but since the raft implementation of Hyperledger Fabric is developed by the 
 Hyperledger community, this means that you can get support on the implementation of your (raft-based) ordering nodes. Before, 
