@@ -33,9 +33,22 @@ you can see a block is being written to the ledger channel.
 <br>
 
 To see raft in action, we can submit a transaction to the Fabcar UI while the docker logs 
-are running. 
+are running. When the docker logs are first shown, we are at block 10. After the create 
+car transaction is submitted to the UI, and the nodes agree on the result, the data 
+is written into block 11, as shown in the gif below.
 
-![sdf](https://user-images.githubusercontent.com/10428517/71459965-b2e54380-275e-11ea-9015-4701f8810909.gif)
+![createCar](https://user-images.githubusercontent.com/10428517/71459965-b2e54380-275e-11ea-9015-4701f8810909.gif)
+
+Next, we will submit a change car owner transaction, and can see that block number 12 is 
+written to the channel once the transaction goes through.
+
+![changeCar](https://user-images.githubusercontent.com/10428517/71459972-bb3d7e80-275e-11ea-8e31-9582edc21da8.gif)
+
+This repo will show you how to build your own Hyperledger Fabric network running a 5-node 
+raft consensus protocol, and submit transactions through the UI shown in the gifs above.
+Lastly, this repo will explain the basics behind the raft protocol.
+
+### Background on Raft protocol
 
 With the new [Hyperledger Fabric v1.4.1 release](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html), you now have the ability to deploy a truly decentralized, crash fault tolerant (CFT) ordering service. Not only that, but since the raft implementation of Hyperledger Fabric is developed by the 
 Hyperledger community, this means that you can get support on the implementation of your (raft-based) ordering nodes. Before, 
