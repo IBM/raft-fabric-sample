@@ -365,18 +365,19 @@ of the nodes on purpose, and then submit a transaction to the network to make su
 network still works as expected. 
 
 As we have learned - raft needs a quorum (or a majority) of the nodes to be operational 
-for the algorithm to work. In this case, we have five nodes, so at least three of the 
-nodes will be up. In the first gif, we will first stop node number 4. We will use 
+for the algorithm to work. In this case, we have five nodes, so we need **at least** three of the 
+nodes will be up (3/5). In the first gif, we will first stop node number 4. We will use 
 the following command to do so: 
 
 ```
 server$ docker container stop orderer4.example.com
 ```
+We then submit a `createCar` transaction to the network, and will see the transaction still goes through since four out of the five (4/5) nodes
+are still operating. As a result, **CAR15** is created.
 
 ![stopNode4](https://user-images.githubusercontent.com/10428517/71500886-de7a3380-281b-11ea-9843-1d47ba64b2c8.gif)
 
-We will see the transaction still goes through since four out of the five (4/5) nodes
-are still operating. As a result, **CAR15** is created.
+
 
 Similarly, we will stop node number 5. Again, since three out of five (3/5) of the nodes 
 are still operating, all will work as expected. As a result, **CAR16** is created.
