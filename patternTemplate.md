@@ -1,25 +1,39 @@
 # Short title
 
-> Deploy a smart contract on the IBM Blockchain Platform running on OpenShift
+> Run a smart contract on a blockchain network with the raft ordering service
 
 # Long title
 
-> Deploy the fabcar Hyperledger Fabric smart contract on the IBM Blockchain Platform running on the Red Hat OpenShift Container Platform 
+> Deploy the fabcar smart contract onto a Hyperledger Fabric network running a five-node raft ordering service
 
 # Author
 
-* Horea Porutiu <horea.porutiu@ibm.com>, Mihir Shah <mrshah@us.ibm.com>, Ratnakar Asara <rasara@us.ibm.com>
+* Horea Porutiu <horea.porutiu@ibm.com>
 
 # URLs
 
 ### Github repo
 
-> https://github.com/horeaporutiu/fabcar-openshift-public
-
+> https://github.com/horeaporutiu/raft-fabric-sample
 
 # Summary
 
-> Blockchain is not only about cutting out the middle-man and being able to transact on a network directly with your peers but also about having nodes in multiple locations such that the network cannot be compromised through a single point of failure - decentralization is one of the most important aspects of blockchain.  The more decentralized your network is, the harder it is to bring your network down, or manipulate it maliciously. Through the power of Kubernetes, and more specifically the Red Hat OpenShift platform, the IBM Blockchain Platform is now more decentralized than ever. It can easily be deployed on all of the major cloud providers, on your own hardware, or a combination of the two. 
+> Given that there are many possible ways that 
+the nodes on a blockchain network may come to agree on the order of transactions, and that
+agreement is essential for a distributed computing network, it is no surprise that the 
+debate over the most efficient consensus mechanism often a heated, religious, debate. 
+At the heart of consensus mechanisms is solving a difficult, popular, distributed computing 
+question: how can we (computers)
+agree on one result (reach consensus) among a group of computers when we know that the 
+computers are unreliable? Although there is not perfect way to solve this problem, the 
+de-facto standard has since 1989 has been the Paxos algorithm. The problem with Paxos,
+is that it takes Ph.D students years to master, and even the brightest of engineers that 
+try to implement this algorithm in practice have difficulties fully understanding, and thus,
+implementing the algorithm in practice. 
+
+Enter
+
+
 
 # Technologies
 
