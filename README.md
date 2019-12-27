@@ -95,11 +95,11 @@ a Red Hat OpenShift cluster. The operator creates a network onto the IBM Blockch
 
 # Steps
 1. [Clone the repo](#step-1-clone-the-repo)
-2. [(Optional) Clean your Docker images](#step-2-(Optional)-Clean-your-Docker-images)
+2. [Optional Clean your Docker images](#step-2-Optional-Clean-your-Docker-images)
 3. [Generate cryptographic material](#step-3-Generate-cryptographic-material)
 4. [Install Fabcar web app dependencies](#step-4-Install-Fabcar-web-app-dependencies)
 5. [Create a cryptographic identity](#step-5-Create-a-cryptographic-identity)
-6. [Start the Fabcar web app](#step-6-start-the-Fabcar-)
+6. [Start the Fabcar web app](#step-6-start-the-Fabcar-web-app)
 
 
 ## Step 1. Clone the repo
