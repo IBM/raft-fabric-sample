@@ -101,7 +101,6 @@ a Red Hat OpenShift cluster. The operator creates a network onto the IBM Blockch
 5. [Create a cryptographic identity](#step-5-Create-a-cryptographic-identity)
 6. [Start the Fabcar web app](#step-6-start-the-Fabcar-web-app)
 
-
 ## Step 1. Clone the repo
 
 **Note: This repo is 73MB. May take some time do clone.**
@@ -360,13 +359,53 @@ Transaction has been evaluated, result is: [{"Key":"CAR0","Record":{"color":"blu
 ::1 - - [21/Dec/2019:04:54:03 +0000] "GET /queryAllCars HTTP/1.1" 200 1063 "http://localhost:4200/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
 ```
 
-
-
-
 ## Conclusion
 
+Now that we have submitted transactions to our ordering service, we can check the logs of 
+each of the ordering nodes by submitting the following command:
+
+```
+first-network$ docker logs orderer.example.com
+```
+
+You should see something like the following:
+
+```
+2019-12-26 05:25:49.301 UTC [comm.grpc.server] 1 -> INFO 072 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=172.20.0.1:49760 grpc.code=OK grpc.call_duration=6.1495ms
+2019-12-26 05:25:51.317 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 073 Writing block [11] (Raft index: 17) to ledger channel=mychannel node=1
+2019-12-26 05:26:07.095 UTC [comm.grpc.server] 1 -> INFO 074 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Broadcast grpc.peer_address=172.20.0.1:49792 grpc.code=OK grpc.call_duration=5.1945ms
+2019-12-26 05:26:09.113 UTC [orderer.consensus.etcdraft] writeBlock -> INFO 075 Writing block [12] (Raft index: 18) to ledger channel=mychannel node=1
+```
+
+You can also see each of the other ordering nodes' logs too, by changing the name of the 
+Docker container you want to inspect. For example, you can also inspect the 4th orderer node
+with the following command:
+
+```
+first-network$ docker logs orderer4.example.com
+```
+
+The logs show you exactly what is being recorded on the network in terms of who is the leader, the following, who is sending out the heartbeat message, and other important aspects 
+of the consensus mechanism. To learn more about the raft consensus mechanism, I urge you to 
+see the white paper, along with the other articles that are linked below. To fully 
+learn the intricacies behind the algorithm, you will need to spend a lot of time reading and 
+experimenting.
+
+In this pattern, you learned that you can build a five-node ordering service network using the build your first network script, and modifying it a little bit. You also learned a some 
+of the basics behind how raft works - namely, you learned how Raft uses leaders, voting,
+and timeouts to ensure that data is properly stored and propagated across a network. Finally,
+you saw that you can check the logs of a Docker container to see all of the raft consensus 
+details such as when leaders are elected, when blocks are written, and when heartbeat 
+messages are sent. This should give you a good idea on how to implement Raft on your own
+blockchain use case, and why it is useful in the first place. 
+
+If you enjoyed this pattern, please give it a star, since that will help us cater our 
+content in the future to your needs. Thanks :) 
 
 ## Extending the code pattern
+To make the network even more distributed, you could always add more ordering nodes, peers, 
+or organizations. For the purpose of this pattern though, you could add more ordering nodes 
+to increase the crash fault tolerance.
 
 
 # Related IBM Developer content
@@ -374,6 +413,8 @@ Transaction has been evaluated, result is: [{"Key":"CAR0","Record":{"color":"blu
 
 # Related links
 * [Raft White Paper](https://raft.github.io/raft.pdf)
+* [Raft Website - interactive demo](https://raft.github.io/)
+* [Build your first netowrk](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html)
 
 
 ## License
