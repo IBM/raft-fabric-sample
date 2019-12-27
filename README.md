@@ -366,7 +366,7 @@ network still works as expected.
 
 As we have learned - raft needs a quorum (or a majority) of the nodes to be operational 
 for the algorithm to work. In this case, we have five nodes, so we need **at least** three of the 
-nodes will be up (3/5).
+nodes to be up (3/5).
 
 First, we get the logs of ordering node 4 with the following command to prove 
 that it is operating as normal:
@@ -381,7 +381,19 @@ the following command to do so:
 server$ docker container stop orderer4.example.com
 ```
 We then submit a `createCar` transaction to the network, and will see the transaction still goes through since four out of the five (4/5) nodes
-are still operating. As a result, **CAR15** is created.
+are still operating. As a result, **CAR15** is created. After you have clicked on the
+createCar button, as shown below, 
+we will check the logs of node number 5, with the following command:
+
+```
+server$ docker logs -f orderer5.example.com
+```
+
+You should see something like the following:
+
+```
+2019-12-27 04:21:39.849 UTC [orderer.consensus.etcdraft] writeBlock -> INFO a065 Writing block [13] (Raft index: 19) to ledger channel=mychannel node=5
+```
 
 ![stopNode4](https://user-images.githubusercontent.com/10428517/71500886-de7a3380-281b-11ea-9843-1d47ba64b2c8.gif)
 
