@@ -366,7 +366,15 @@ network still works as expected.
 
 As we have learned - raft needs a quorum (or a majority) of the nodes to be operational 
 for the algorithm to work. In this case, we have five nodes, so we need **at least** three of the 
-nodes will be up (3/5). In the first gif, we will first stop node number 4. We will use 
+nodes will be up (3/5).
+
+First, we get the logs of ordering node 4 with the following command to prove 
+that it is operating as normal:
+
+```
+server$ docker logs -f orderer4.example.com
+```
+Next, as shown in the gif below, we will stop node number 4. We will use 
 the following command to do so: 
 
 ```
