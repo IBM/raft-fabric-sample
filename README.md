@@ -373,7 +373,7 @@ the following command to do so:
 server$ docker container stop orderer4.example.com
 ```
 
-![stopNode4](https://user-images.githubusercontent.com/10428517/71459965-b2e54380-275e-11ea-9015-4701f8810909.gif)
+![stopNode4](https://user-images.githubusercontent.com/10428517/71500886-de7a3380-281b-11ea-9843-1d47ba64b2c8.gif)
 
 We will see the transaction still goes through since four out of the five (4/5) nodes
 are still operating. As a result, **CAR15** is created.
