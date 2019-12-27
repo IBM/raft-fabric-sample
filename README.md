@@ -48,20 +48,6 @@ This repo will show you how to build your own Hyperledger Fabric network running
 raft consensus protocol, and submit transactions through the UI shown in the gifs above.
 Lastly, this repo will explain the basics behind the raft protocol.
 
-### Background on Raft protocol
-
-With the new [Hyperledger Fabric v1.4.1 release](https://hyperledger-fabric.readthedocs.io/en/release-1.4/whatsnew.html), you now have the ability to deploy a truly decentralized, crash fault tolerant (CFT) ordering service. Not only that, but since the raft implementation of Hyperledger Fabric is developed by the 
-Hyperledger community, this means that you can get support on the implementation of your (raft-based) ordering nodes. Before, 
-with the Kafka based ordering node, you would have to go to Apache for support 
-and Hyperledger could not support our ordering service - making it a much more 
-complex implementation process, especially if you ran into errors.
-
-Not only that, but the way that Kafka was meant to be implemented within the ordering service, the Kafka cluster and Zookeeper ensemble were meant to be run by *one* organization i.e. a single point a failure. Point in case, this is not the kind of decentralization we expect from a blockchain and any distributed network.
-
-With the new Raft ordering service, we can have the ordering nodes run by 
-multiple different organizations. This is meant to be *the default* for all
-production deployments moving forward. 
-
 ## Intro to Raft Consensus Algorithm
 The purpose of consensus algorithms is to enable machines (nodes) to work together and survive even if 
 parts of the whole fail (i.e. nodes crash). This is very important for software, especially mission-critical software, due to the fact that if some nodes crash, we want to ensure that our application can still run 
@@ -109,6 +95,11 @@ a Red Hat OpenShift cluster. The operator creates a network onto the IBM Blockch
 
 # Steps
 1. [Clone the repo](#step-1-clone-the-repo)
+2. [(Optional) Clean your Docker images](#step-2-(Optional)-Clean-your-Docker-images)
+3. [Generate cryptographic material](#step-3-Generate-cryptographic-material)
+4. [Install Fabcar web app dependencies](#step-4-Install-Fabcar-web-app-dependencies)
+5. [Create a cryptographic identity](#step-5-Create-a-cryptographic-identity)
+6. [Start the Fabcar web app](#step-6-start-the-Fabcar-)
 
 
 ## Step 1. Clone the repo
@@ -250,7 +241,7 @@ Attempting to Query peer0.org1 ...3 secs
 
 ```
 
-## Step 3. Install Fabcar web-app dependencies
+## Step 4. Install Fabcar web app dependencies
 
 Next, we need to install the dependencies to run the fabcar UI. In a two separate Terminal window, navigate to the 
 client and server directories of the web-app, and run npm install. 
@@ -267,7 +258,7 @@ raft-fabric-samples$ cd web-app/server/
 server$ npm install
 ```
 
-## Step 4. Create a cryptographic identity
+## Step 5. Create a cryptographic identity
 Next, we need to add a reference to our private keys for our Org1 and Org2 of our application, so that we can 
 prove to the network that our keys have been generated from a valid certificate 
 authority. In step 1, from the `./byfn.sh generate -o etcdraft` command, we created certificates for org1.example.com and org2.example.com which are the organizations that are managing and creating certificates for the peer nodes. These certificates are 
@@ -306,7 +297,7 @@ msg: Successfully enrolled admin user admin and imported it into the wallet
 Nice job! We're ready to start the app now :)
 
 
-## Step 5. Start the Fabcar web-app
+## Step 6. Start the Fabcar web app
 
 Once the dependencies are installed, in the two separate windows, run the following command to start the Angular app, and the Node.js server.
 
