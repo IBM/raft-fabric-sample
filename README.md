@@ -359,6 +359,39 @@ Transaction has been evaluated, result is: [{"Key":"CAR0","Record":{"color":"blu
 ::1 - - [21/Dec/2019:04:54:03 +0000] "GET /queryAllCars HTTP/1.1" 200 1063 "http://localhost:4200/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.88 Safari/537.36"
 ```
 
+## Step 7. Test the network - crash the ordering nodes
+To test the network and make sure it is actually crash fault tolerant, we will crash one 
+of the nodes on purpose, and then submit a transaction to the network to make sure the 
+network still works as expected. 
+
+As we have learned - raft needs a quorum (or a majority) of the nodes to be operational 
+for the algorithm to work. In this case, we have five nodes, so at least three of the 
+nodes will be up. In the first gif, we will first stop node number 4. We will use 
+the following command to do so: 
+
+```
+server$ docker container stop orderer4.example.com
+```
+
+![stopNode4](https://user-images.githubusercontent.com/10428517/71459965-b2e54380-275e-11ea-9015-4701f8810909.gif)
+
+We will see the transaction still goes through since four out of the five (4/5) nodes
+are still operating. As a result, **CAR15** is created.
+
+Similarly, we will stop node number 5. Again, since three out of five (3/5) of the nodes 
+are still operating, all will work as expected. As a result, **CAR16** is created.
+
+![stopNode5](https://user-images.githubusercontent.com/10428517/71500885-de7a3380-281b-11ea-8fcf-f0f784e2e8c9.gif)
+
+Lastly, when we stop node three, only two out of five nodes are operating (2/5). This 
+means that we do not have a quorum. In this scenario, as shown below, the network 
+is unable to reach consensus, and we are not able to update the network with our 
+transaction. 
+
+![doesntWork](https://user-images.githubusercontent.com/10428517/71500884-dd490680-281b-11ea-8205-c32018d26862.gif)
+
+
+
 ## Conclusion
 
 Now that we have submitted transactions to our ordering service, we can check the logs of 
