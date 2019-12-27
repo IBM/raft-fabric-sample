@@ -422,7 +422,7 @@ see the white paper, along with the other articles that are in the [related link
 learn the intricacies behind the algorithm, you will need to spend a lot of time reading and 
 experimenting.
 
-In this pattern, you learned that you can build a five-node ordering service network using the [Build your first network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/) script, and modifying it a little bit. You also learned a some 
+In this pattern, you learned that you can build a five-node ordering service network using the [Build your first network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html) script, and modifying it a little bit. You also learned a some 
 of the basics behind how raft works - namely, you learned how Raft uses leaders, voting,
 and timeouts to ensure that data is properly stored and propagated across a network. Finally,
 you saw that you can check the logs of a Docker container to see all of the raft consensus 
