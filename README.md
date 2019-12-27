@@ -76,18 +76,21 @@ When the reader has completed this code pattern, they will understand how to:
 <br> -->
 
 # Flow Description
-1. The blockchain operator purchases an entitlement to the IBM Blockchain Platform V2.1.0.
-<!-- 2. The blockchain operator deploys the IBM Blockchain Platform (which is running the latest Hyperledger Fabric version) onto
-a Red Hat OpenShift cluster. The operator creates a network onto the IBM Blockchain platform, eventually installing and instantiating the Fabcar smart contract on the network.
-3. The Node.js application server uses the Fabric SDK to interact with the deployed network on IBM Blockchain Platform and creates APIs for a web client.
-4. The Angular client uses the Node.js Fabric SDK to interact with the network.
-5. The User interacts with the Fabcar Angular web application to update and query the blockchain state. -->
+1. The blockchain operator generates cryptographic materials such as public and private keys
+for the organizations that will manage the peer nodes.
+2. The blockchain operator will bring up the network including five-ordering nodes running raft, install the smart contract on the peers, and query the network to ensure the contract is working properly.
+3. The blockchain operator will install dependencies for the Fabcar web application, including server side, and client side dependencies.
+4. The blockchain operator will create a cryptographic identity for the client which
+will be submitting transactions via the Fabcar UI, and store that identity in a wallet.
+5. The user interacts with the Fabcar Angular web application to update the blockchain state,and the raft-based ordering nodes use leader election to decide which node will take lead in writing blocks.
+6. The user inspects the ordering service logs to ensure that the raft consensus algorithm
+is running as expected.
 
 # Included components
 
 ## Featured technologies
 + [Hyperledger Fabric v1.4.4](https://hyperledger-fabric.readthedocs.io) is a platform for distributed ledger solutions, underpinned by a modular architecture that delivers high degrees of confidentiality, resiliency, flexibility, and scalability.
-+ [Docker](https://www.docker.com/) Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels..
++ [Docker](https://www.docker.com/) Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels.
 
 ## Prerequisites
 
@@ -445,7 +448,7 @@ to increase the crash fault tolerance.
 # Related links
 * [Raft White Paper](https://raft.github.io/raft.pdf)
 * [Raft Website - interactive demo](https://raft.github.io/)
-* [Build your first netowrk](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html)
+* [Build your first network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html)
 
 
 ## License

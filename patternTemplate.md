@@ -95,8 +95,8 @@ is running as expected.
 
 # Components and services
 
-*	[IBM Blockchain Platform v2.1.0](https://cloud.ibm.com/docs/services/blockchain-rhos?topic=blockchain-rhos-get-started-console-ocp) IBM® Blockchain Platform provides a managed and full stack blockchain-as-a-service (BaaS) offering that allows you to deploy blockchain components on any x86_64 architecture supported by the Red Hat OpenShift Container Platform 3.11
-*	[Red Hat OpenShift Container Platform 3.11](https://www.openshift.com/products/container-platform) Red Hat® OpenShift® offers a consistent hybrid cloud foundation for building and scaling containerized applications. 
++ [Hyperledger Fabric v1.4.4](https://hyperledger-fabric.readthedocs.io) is a platform for distributed ledger solutions, underpinned by a modular architecture that delivers high degrees of confidentiality, resiliency, flexibility, and scalability.
++ [Docker](https://www.docker.com/) Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and config
 
 # Runtimes
 
@@ -104,12 +104,14 @@ is running as expected.
 
 # Related IBM Developer content
 * [Fabcar Code Pattern](https://github.com/IBM/fabcar-blockchain-sample)
-* [IBM Code Patterns for Blockchain](https://developer.ibm.com/patterns/category/blockchain/)
-* [Hyperledger Fabric Podcast](https://github.com/IBM/fabcar-blockchain-sample)
+* [Demystifying Hyperledger Fabric ordering and decentralization](https://developer.ibm.com/technologies/blockchain/articles/blockchain-hyperledger-fabric-ordering-decentralization)
+* [Does Hyperledger Fabric perform at scale?](https://www.ibm.com/blogs/blockchain/2019/04/does-hyperledger-fabric-perform-at-scale/)
+
 
 # Related links
-* [Fabcar Tutorial - Hyperledger Fabric Site](https://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html)
-* [Fabcar YouTube Tutorial](https://www.youtube.com/watch?v=2moCQeHCx-g)
+* [Raft White Paper](https://raft.github.io/raft.pdf)
+* [Raft Website - interactive demo](https://raft.github.io/)
+* [Build your first network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html)
 
 
 
