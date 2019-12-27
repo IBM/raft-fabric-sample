@@ -100,6 +100,7 @@ a Red Hat OpenShift cluster. The operator creates a network onto the IBM Blockch
 4. [Install Fabcar web app dependencies](#step-4-Install-Fabcar-web-app-dependencies)
 5. [Create a cryptographic identity](#step-5-Create-a-cryptographic-identity)
 6. [Start the Fabcar web app](#step-6-start-the-Fabcar-web-app)
+7. [Test the network - crash the ordering nodes](#step-7-Test-the-network---crash-theordering-nodes)
 
 ## Step 1. Clone the repo
 
