@@ -58,7 +58,7 @@ than Kafka. More importantly, Raft allows different organizations to contribute 
 
 # Intro to Raft Consensus
 
-> Given that there are many possible ways that 
+Given that there are many possible ways that 
 the nodes on a blockchain network may come to agreement (or consensus), and that
 agreement is essential for a distributed computing network, it is no surprise that the 
 debate over the most efficient consensus algorithm is often heated and even religious.
