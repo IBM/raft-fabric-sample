@@ -90,11 +90,13 @@ When the reader has completed this code pattern, they will understand how to:
 * Submit transactions and run a blockchain network on using a Raft ordering service
 
 # Flow Diagram
-<!-- <br>
+<br>
 <p align="center">
-  <img src="images/archDiagram.png">
+
+![stopNode5](https://user-images.githubusercontent.com/10428517/71500885-de7a3380-281b-11ea-8fcf-f0f784e2e8c9.gif)
+
 </p>
-<br> -->
+<br>
 
 # Flow Description
 1. The blockchain operator generates cryptographic materials such as public and private keys
