@@ -60,8 +60,9 @@ When the reader has completed this code pattern, they will understand how to:
 
 # Technologies
 
-[Blockchain](https://developer.ibm.com/technologies/blockchain/): A blockchain is a tamper-evident, shared digital ledger that records transactions in a public or private peer-to-peer network. The blockchain acts as a single source of truth, and members in a blockchain network can view only those transactions that are relevant to them.
-[Containers](https://developer.ibm.com/technologies/containers/): A Containers architecture enables multiple services to run on the same machine, isolated from each other, in the same way as virtual machines, but with much less overhead.
+* [Blockchain](https://developer.ibm.com/technologies/blockchain/): A blockchain is a tamper-evident, shared digital ledger that records transactions in a public or private peer-to-peer network. The blockchain acts as a single source of truth, and members in a blockchain network can view only those transactions that are relevant to them.
+
+* [Containers](https://developer.ibm.com/technologies/containers/): A Containers architecture enables multiple services to run on the same machine, isolated from each other, in the same way as virtual machines, but with much less overhead.
 
 # Flow
 
