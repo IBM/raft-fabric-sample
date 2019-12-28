@@ -114,6 +114,6 @@ is running as expected.
 * [Raft White Paper](https://raft.github.io/raft.pdf)
 * [Raft Website - interactive demo](https://raft.github.io/)
 * [Build your first network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html)
-
+* [Hyperledger Fabric Ordering Service Implementations](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html#ordering-service-implementations)
 
 
