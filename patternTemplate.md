@@ -95,6 +95,7 @@ is running as expected.
 4. Install Fabcar web app dependencies
 5. Create a cryptographic identity
 6. Start the Fabcar web app
+7. Test the network - crash the ordering nodes
 
 # Components and services
 
