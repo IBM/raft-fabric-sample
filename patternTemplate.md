@@ -18,7 +18,7 @@
 
 
 # Summary
-> Given that Hyperledger Fabric has several ordering service implementations,
+Given that Hyperledger Fabric has several ordering service implementations,
 including Solo, Kafka, and Raft, you as the developer should know the advantages 
 and disadvantages of each implementation before making a design decision. As the 
 new default for production blockchain networks, the Raft consensus algorithm is a 
@@ -27,7 +27,7 @@ than Kafka. More importantly, Raft allows different organizations to contribute 
 
 # Description
 
-> Given that there are many possible ways that 
+Given that there are many possible ways that 
 the nodes on a blockchain network may come to agreement (or consensus), and that
 agreement is essential for a distributed computing network, it is no surprise that the 
 debate over the most efficient consensus algorithm is often heated and even religious.
@@ -53,10 +53,10 @@ and starting some of the ordering nodes.
 
 When the reader has completed this code pattern, they will understand how to:
 
-> Understand how the raft algorithm works
-> Understand how to build and run a Raft ordering service with multiple organizations in Hyperledger Fabric
-> Submit transactions and run a blockchain network on using a Raft ordering service
-> Test the ordering service fault tolerance by deleting (crashing) one of the ordering nodes
+1. Understand how the raft algorithm works
+2. Understand how to build and run a Raft ordering service with multiple organizations in Hyperledger Fabric
+3. Submit transactions and run a blockchain network on using a Raft ordering service
+4. Test the ordering service fault tolerance by deleting (crashing) one of the ordering nodes
 
 # Technologies
 
