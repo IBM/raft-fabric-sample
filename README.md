@@ -174,7 +174,11 @@ you want to continue, type in `y`:
 
 ```
 
-first-network$ docker network prune
+**🚧🚧🚧The command below we clear all docker containers on your system. Only use it
+if you are okay with doing this. I use it everytime to ensure that the containers that 
+are needed for the pattern will work properly, but use at your own discretion.🚧🚧🚧**
+first-network$
+docker stop $(docker ps -a -q)  ; docker rm -f $(docker ps -aq) ; docker system prune -a ; docker volume prune ; docker ps -a ; docker images -a ; docker volume ls
 
 WARNING! This will remove all local volumes not used by at least one container.
 Are you sure you want to continue? [y/N] y
