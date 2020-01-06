@@ -93,7 +93,7 @@ When the reader has completed this code pattern, they will understand how to:
 <br>
 <p align="center">
 
-![stopNode5](https://user-images.githubusercontent.com/10428517/71536882-5f433900-28c9-11ea-9256-df52ef85fae2.png)
+![flowDiagram](https://user-images.githubusercontent.com/10428517/71844741-b55b6d80-307b-11ea-8428-f973865d556a.png)
 
 </p>
 <br>
