@@ -115,12 +115,12 @@ is running as expected.
 
 # Watch the Video - Application Demo Part 1/2
 
-[![](docs/images/demoRaft.png)](https://www.youtube.com/watch?v=3_SjJ_gNyrk)
+[![](docs/images/demoRaft.png)](https://www.youtube.com/watch?v=Lo9UB_idBto)
 
 
 # Watch the Video - Application Setup Part 2/2
 
-[![](docs/images/setupRaft.png)](https://www.youtube.com/watch?v=Lo9UB_idBto)
+[![](docs/images/setupRaft.png)](https://www.youtube.com/watch?v=3_SjJ_gNyrk)
 
 
 ## Prerequisites
