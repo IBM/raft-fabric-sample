@@ -90,8 +90,6 @@ an election is started to choose a new leader.
 * The leader takes care of updating the state of the network. Each of the nodes in the network
 votes on who should be the leader.
 * Leaders periodically send out heartbeat messages, to maintain their authority over followers.
-* 
-
 
 When the reader has completed this code pattern, they will understand how to:
 
