@@ -115,11 +115,13 @@ is running as expected.
 
 # Watch the Video - Application Demo Part 1/2
 
-![demo](https://user-images.githubusercontent.com/10428517/71871873-78b96180-30cf-11ea-9e1a-d6d499c0e59a.png)
+[![](docs/images/demoRaft.png)](https://www.youtube.com/watch?v=3_SjJ_gNyrk)
+
 
 # Watch the Video - Application Setup Part 2/2
 
-![setup](https://user-images.githubusercontent.com/10428517/71871871-76ef9e00-30cf-11ea-89cf-38557b93d2b8.png)
+[![](docs/images/setupRaft.png)](https://www.youtube.com/watch?v=Lo9UB_idBto)
+
 
 ## Prerequisites
 
