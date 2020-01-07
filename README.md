@@ -1,6 +1,6 @@
  **This code pattern uses only open-source technologies. There is no need for an IBM Cloud account or any paid services.**
 
-# Build and run a decentralized multi-node ordering service using raft consensus on Hyperledger Fabric
+# Build and run a decentralized multi-node ordering service using Raft consensus on Hyperledger Fabric
 
 This project demonstrates how to build and submit transactions to a five-node ordering service running 
 on the (crash fault tolerant) Raft consensus protocol. This repo makes use of the Fabcar 
@@ -20,7 +20,7 @@ The five-node ordering service is made up of five separate docker containers, as
 </p>
 <br>
 
-After you submit these transactions, you can see the raft consensus protocol in action by 
+After you submit these transactions, you can see the Raft consensus protocol in action by 
 reading the logs from the ordering node containers. For example, the logs from node 1 are 
 shown below. First, we can see that a Heartbeat message was received, thus making node 1 
 a follower in the present term. Next, you can see the leader is changed to node 5. Lastly,
@@ -32,7 +32,7 @@ you can see a block is being written to the ledger channel.
 </p>
 <br>
 
-To see raft in action, we can submit a transaction to the Fabcar UI while the docker logs 
+To see Raft in action, we can submit a transaction to the Fabcar UI while the docker logs 
 are running. When the docker logs are first shown, we are at block 10. After the create 
 car transaction is submitted to the UI, and the nodes agree on the result, the data 
 is written into block 11, as shown in the gif below.
@@ -45,8 +45,8 @@ written to the channel once the transaction goes through.
 ![changeCar](https://user-images.githubusercontent.com/10428517/71459972-bb3d7e80-275e-11ea-8e31-9582edc21da8.gif)
 
 This repo will show you how to build your own Hyperledger Fabric network running a 5-node 
-raft consensus protocol, and submit transactions through the UI shown in the gifs above.
-Lastly, this repo will explain the basics behind the raft protocol.
+Raft consensus protocol, and submit transactions through the UI shown in the gifs above.
+Lastly, this repo will explain the basics behind the Raft protocol.
 
 # Intro to Hyperledger Fabric Consensus
 Given that Hyperledger Fabric has several [ordering service implementations](https://hyperledger-fabric.readthedocs.io/en/release-1.4/orderer/ordering_service.html#ordering-service-implementations),
@@ -71,7 +71,7 @@ is that it takes Ph.D students years to master, and even the brightest of engine
 try to implement this algorithm in practice have difficulties fully understanding, and thus,
 implementing their solution. 
 
-Enter raft. Designed as an alternative consensus algorithm to Paxos, raft is much easier 
+Enter Raft. Designed as an alternative consensus algorithm to Paxos, Raft is much easier 
 to understand, and is now used in some of the most successful software projects, such as
 Docker. Since the start of Hyperledger Fabric, consensus has been designed as pluggable, 
 and you the developer get to choose which type of consensus your ordering nodes will use.
@@ -84,7 +84,7 @@ and starting some of the ordering nodes.
 
 When the reader has completed this code pattern, they will understand how to:
 
-* Understand how the raft algorithm works
+* Understand how the Raft algorithm works
 * Understand how to build and run a Raft ordering service with multiple organizations in Hyperledger Fabric
 * Test the ordering service fault tolerance by deleting (crashing) one of the ordering nodes 
 * Submit transactions and run a blockchain network on using a Raft ordering service
@@ -101,12 +101,12 @@ When the reader has completed this code pattern, they will understand how to:
 # Flow Description
 1. The blockchain operator generates cryptographic materials such as public and private keys
 for the organizations that will manage the peer nodes.
-2. The blockchain operator will bring up the network including five-ordering nodes running raft, install the smart contract on the peers, and query the network to ensure the contract is working properly.
+2. The blockchain operator will bring up the network including five-ordering nodes running Raft, install the smart contract on the peers, and query the network to ensure the contract is working properly.
 3. The blockchain operator will install dependencies for the Fabcar web application, including server side, and client side dependencies.
 4. The blockchain operator will create a cryptographic identity for the client which
 will be submitting transactions via the Fabcar UI, and store that identity in a wallet.
-5. The user interacts with the Fabcar Angular web application to update the blockchain state,and the raft-based ordering nodes use leader election to decide which node will take lead in writing blocks.
-6. The user inspects the ordering service logs to ensure that the raft consensus algorithm
+5. The user interacts with the Fabcar Angular web application to update the blockchain state,and the Raft-based ordering nodes use leader election to decide which node will take lead in writing blocks.
+6. The user inspects the ordering service logs to ensure that the Raft consensus algorithm
 is running as expected.
 
 ## Featured technologies
@@ -138,12 +138,12 @@ is running as expected.
 
 ## Step 1. Clone the repo
 
-**Note: This repo is 73MB. May take some time do clone.**
+**Note: This repo is 78MB. May take some time to clone.**
 
 Clone this repo by issuing the following command in Terminal. Next, navigate to the newly cloned folder.
 
 ```
-Workdir$ git clone https://github.com/IBM/raft-fabric-samples.git
+Workdir$ git clone https://github.com/IBM/raft-fabric-sample.git
 Workdir$ cd raft-fabric-samples
 ```
 
@@ -234,7 +234,7 @@ org2.example.com
 + set +x
 ```
 
-Next, Start up the raft network with the following command. This may take a few minutes to execute...
+Next, Start up the Raft network with the following command. This may take a few minutes to execute...
 
 ```
 first-network$ ./byfn.sh up -o etcdraft -l node
@@ -406,7 +406,7 @@ To test the network and make sure it is actually crash fault tolerant, we will c
 of the nodes on purpose, and then submit a transaction to the network to make sure the 
 network still works as expected. 
 
-As we have learned - raft needs a quorum (or a majority) of the nodes to be operational 
+As we have learned - Raft needs a quorum (or a majority) of the nodes to be operational 
 for the algorithm to work. In this case, we have five nodes, so we need **at least** three of the 
 nodes to be up (3/5).
 
@@ -458,15 +458,15 @@ transaction.
 ## Conclusion
 
 The logs above show you exactly what is being recorded on the network in terms of who is the leader, the following, who is sending out the heartbeat message, and other important aspects 
-of the consensus mechanism. To learn more about the raft consensus mechanism, I urge you to 
+of the consensus mechanism. To learn more about the Raft consensus mechanism, I urge you to 
 see the white paper, along with the other articles that are in the [related links](https://github.com/horeaporutiu/raft-fabric-sample#related-links) section below. To fully 
 learn the intricacies behind the algorithm, you will need to spend a lot of time reading and 
 experimenting.
 
 In this pattern, you learned that you can build a five-node ordering service network using the [Build your first network](https://hyperledger-fabric.readthedocs.io/en/release-1.4/build_network.html) script, and modifying it a little bit. You also learned a some 
-of the basics behind how raft works - namely, you learned how Raft uses leaders, voting,
+of the basics behind how Raft works - namely, you learned how Raft uses leaders, voting,
 and timeouts to ensure that data is properly stored and propagated across a network. Finally,
-you saw that you can check the logs of a Docker container to see all of the raft consensus 
+you saw that you can check the logs of a Docker container to see all of the Raft consensus 
 details such as when leaders are elected, when blocks are written, and when heartbeat 
 messages are sent. This should give you a good idea on how to implement Raft on your own
 blockchain use case, and why it is useful in the first place. 
