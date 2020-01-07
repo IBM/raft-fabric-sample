@@ -114,7 +114,7 @@ for the organizations that will manage the peer nodes.
 3. The blockchain operator will install dependencies for the Fabcar web application, including server side, and client side dependencies.
 4. The blockchain operator will create a cryptographic identity for the client which
 will be submitting transactions via the Fabcar UI, and store that identity in a wallet.
-5. The user interacts with the Fabcar Angular web application to update the blockchain state,and the Raft-based ordering nodes use leader election to decide which node will take lead in writing blocks.
+5. The user interacts with the Fabcar Angular web application to update the blockchain state, and the Raft-based ordering nodes use leader election to decide which node will take lead in writing blocks.
 6. The user inspects the ordering service logs to ensure that the Raft consensus algorithm
 is running as expected.
 
