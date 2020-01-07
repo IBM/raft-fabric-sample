@@ -113,6 +113,14 @@ is running as expected.
 + [Hyperledger Fabric v1.4.4](https://hyperledger-fabric.readthedocs.io) is a platform for distributed ledger solutions, underpinned by a modular architecture that delivers high degrees of confidentiality, resiliency, flexibility, and scalability.
 + [Docker](https://www.docker.com/) Docker is a set of platform as a service products that use OS-level virtualization to deliver software in packages called containers. Containers are isolated from one another and bundle their own software, libraries and configuration files; they can communicate with each other through well-defined channels.
 
+# Watch the Video - Application Demo Part 1/2
+
+![demo](https://user-images.githubusercontent.com/10428517/71871873-78b96180-30cf-11ea-9e1a-d6d499c0e59a.png)
+
+# Watch the Video - Application Setup Part 2/2
+
+![setup](https://user-images.githubusercontent.com/10428517/71871871-76ef9e00-30cf-11ea-89cf-38557b93d2b8.png)
+
 ## Prerequisites
 
   - [Hyperledger Fabric 1.4 prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html) 
