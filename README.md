@@ -1,6 +1,6 @@
- **This code pattern uses only open-source technologies. There is no need for an IBM Cloud account or any paid services.**
+**This code pattern uses only free, open-source technologies.**
 
-# Build and run a decentralized multi-node ordering service using Raft consensus on Hyperledger Fabric
+# Build and run a smart contract on a Hyperledger Fabric network with the Raft ordering service.
 
 This project demonstrates how to build and submit transactions to a five-node ordering service running 
 on the (crash fault tolerant) Raft consensus protocol. This repo makes use of the Fabcar 
