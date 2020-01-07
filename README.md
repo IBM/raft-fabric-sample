@@ -1,4 +1,4 @@
- **This code pattern uses only open-source technologies. There is no need for an IBM Cloud account or any paid services.**
+ **This code pattern uses only free, open-source technologies.**
 
 # Build and run a decentralized multi-node ordering service using raft consensus on Hyperledger Fabric
 
