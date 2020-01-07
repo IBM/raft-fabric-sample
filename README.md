@@ -85,10 +85,10 @@ and starting some of the ordering nodes.
 # Raft Basics
 * You need a quorum (majority) of the nodes for the network to operate properly.
 * Nodes can be in three states - either a leader, a candidate (asking for votes to become a leader), or a follower
-* Once election timeout is passed (i.e. a follower doesn't receive any communication for a certain period of time) then
-an election is started to choose a new leader.
 * The leader takes care of updating the state of the network. Each of the nodes in the network
 votes on who should be the leader.
+* Once election timeout is passed (i.e. a follower doesn't receive any communication for a certain period of time) then
+an election is started to choose a new leader.
 * Leaders periodically send out heartbeat messages, to maintain their authority over followers.
 
 When the reader has completed this code pattern, they will understand how to:
