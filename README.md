@@ -1,6 +1,6 @@
- **This code pattern uses only free, open-source technologies.**
+**This code pattern uses only free, open-source technologies.**
 
-# Build and run a decentralized multi-node ordering service using raft consensus on Hyperledger Fabric
+# Build and run a smart contract on a Hyperledger Fabric network with the Raft Ordering Service.
 
 This project demonstrates how to build and submit transactions to a five-node ordering service running 
 on the (crash fault tolerant) Raft consensus protocol. This repo makes use of the Fabcar 
