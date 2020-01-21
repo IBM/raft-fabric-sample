@@ -372,7 +372,6 @@ function generateCerts() {
 
   mv crypto-config/peerOrganizations/org1.example.com/ca/*_sk crypto-config/peerOrganizations/org1.example.com/ca/ca.org1.example.com_sk
   mv crypto-config/peerOrganizations/org2.example.com/ca/*_sk crypto-config/peerOrganizations/org2.example.com/ca/ca.org2.example.com_sk
-  mv crypto-config/peerOrganizations/org3.example.com/ca/*_sk crypto-config/peerOrganizations/org3.example.com/ca/ca.org3.example.com_sk
 }
 
 # The `configtxgen tool is used to create four artifacts: orderer **bootstrap
@@ -481,21 +480,6 @@ function generateChannelArtifacts() {
   set +x
   if [ $res -ne 0 ]; then
     echo "Failed to generate anchor peer update for Org2MSP..."
-    exit 1
-  fi
-  echo
-
-  echo
-  echo "#################################################################"
-  echo "#######    Generating anchor peer update for Org3MSP   ##########"
-  echo "#################################################################"
-  set -x
-  configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate \
-    ./channel-artifacts/Org3MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org3MSP
-  res=$?
-  set +x
-  if [ $res -ne 0 ]; then
-    echo "Failed to generate anchor peer update for Org3MSP..."
     exit 1
   fi
   echo

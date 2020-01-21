@@ -71,8 +71,8 @@ services:
     environment:
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      #- FABRIC_LOGGING_SPEC=INFO
-      - FABRIC_LOGGING_SPEC=DEBUG
+      - FABRIC_LOGGING_SPEC=INFO
+      #- FABRIC_LOGGING_SPEC=DEBUG
       - CORE_PEER_ID=Org3cli
       - CORE_PEER_ADDRESS=peer0.org3.example.com:11051
       - CORE_PEER_LOCALMSPID=Org3MSP

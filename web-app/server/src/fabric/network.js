@@ -72,57 +72,51 @@ exports.createCar = async function(key, make, model, color, owner) {
 
 // change car owner transaction
 exports.changeCarOwner = async function(key, newOwner) {
-  try {
+    try {
 
-    console.log('inside changeCar Owner')
-      var response = {};
+        var response = {};
 
-      // Create a new file system based wallet for managing identities.
-      const walletPath = path.join(process.cwd(), '/wallet');
-      const wallet = new FileSystemWallet(walletPath);
-      console.log(`Wallet path: ${walletPath}`);
+        // Create a new file system based wallet for managing identities.
+        const walletPath = path.join(process.cwd(), '/wallet');
+        const wallet = new FileSystemWallet(walletPath);
+        console.log(`Wallet path: ${walletPath}`);
 
-      // Check to see if we've already enrolled the user.
-      const userExists = await wallet.exists(userName);
-      if (!userExists) {
-          console.log('An identity for the user ' + userName + ' does not exist in the wallet');
-          console.log('Run the registerUser.js application before retrying');
-          response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
-          return response;
-      }
+        // Check to see if we've already enrolled the user.
+        const userExists = await wallet.exists(userName);
+        if (!userExists) {
+            console.log('An identity for the user ' + userName + ' does not exist in the wallet');
+            console.log('Run the registerUser.js application before retrying');
+            response.error = 'An identity for the user ' + userName + ' does not exist in the wallet. Register ' + userName + ' first';
+            return response;
+        }
 
-      // Create a new gateway for connecting to our peer node.
-      const gateway = new Gateway();
- 
-      await gateway.connect(connectionFile, { wallet, identity: userName, discovery: gatewayDiscovery });
+        // Create a new gateway for connecting to our peer node.
+        const gateway = new Gateway();
+   
+        await gateway.connect(connectionFile, { wallet, identity: userName, discovery: gatewayDiscovery });
 
-      // Get the network (channel) our contract is deployed to.
-      const network = await gateway.getNetwork('mychannel');
+        // Get the network (channel) our contract is deployed to.
+        const network = await gateway.getNetwork('mychannel');
 
-      // Get the contract from the network.
-      const contract = network.getContract('fabcar');
+        // Get the contract from the network.
+        const contract = network.getContract('fabcar');
 
-      // Submit the specified transaction.
-      // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR10', 'Dave')
-      console.log('before create Private car')
-      await contract.submitTransaction('createPrivateCar');
-      console.log('before evaluateQuerySingleCarPublic');
-      let queryResponse = await contract.submitTransaction('querySingleCarPublic', 'CAR1');
-      console.log('after evaluateQuerySingleCarPublic');
-      let queryResponse2 = await contract.submitTransaction('querySingleCarPrivate', 'CAR1');
-      console.log(queryResponse.toString());
-      console.log(queryResponse2.toString());
-      // Disconnect from the gateway.
-      await gateway.disconnect();
+        // Submit the specified transaction.
+        // changeCarOwner transaction - requires 2 args , ex: ('changeCarOwner', 'CAR10', 'Dave')
+        await contract.submitTransaction('changeCarOwner', key, newOwner);
+        console.log('Transaction has been submitted');
 
-      response.msg = 'changeCarOwner Transaction has been submitted';
-      return response;        
+        // Disconnect from the gateway.
+        await gateway.disconnect();
 
-  } catch (error) {
-      console.error(`Failed to submit transaction: ${error}`);
-      response.error = error.message;
-      return response; 
-  }
+        response.msg = 'changeCarOwner Transaction has been submitted';
+        return response;        
+
+    } catch (error) {
+        console.error(`Failed to submit transaction: ${error}`);
+        response.error = error.message;
+        return response; 
+    }
 }
 
 // query all cars transaction
@@ -149,11 +143,7 @@ exports.queryAllCars = async function() {
         // Create a new gateway for connecting to our peer node.
         const gateway = new Gateway();
 
-        console.log('username to connect to query all cars')
-        console.log(userName)
-
         await gateway.connect(connectionFile, { wallet, identity: userName, discovery: gatewayDiscovery });
-        
 
         // Get the network (channel) our contract is deployed to.
         const network = await gateway.getNetwork('mychannel');
@@ -165,7 +155,7 @@ exports.queryAllCars = async function() {
         // queryAllCars transaction - requires no arguments, ex: ('queryAllCars')
         const result = await contract.evaluateTransaction('queryAllCars');
 
-        // console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
+        console.log(`Transaction has been evaluated, result is: ${result.toString()}`);
 
         return result;
 

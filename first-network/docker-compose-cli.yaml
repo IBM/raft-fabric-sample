@@ -11,11 +11,6 @@ volumes:
   peer1.org1.example.com:
   peer0.org2.example.com:
   peer1.org2.example.com:
-  peer0.org3.example.com:
-  peer1.org3.example.com:
-  ca.org1.example.com:
-  ca.org2.example.com:
-  ca.org3.example.com:
 
 networks:
   byfn:
@@ -47,28 +42,11 @@ services:
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
       - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com_sk
     ports:
-      - "8054:7054"
+      - "8054:8054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw'
     volumes:
-      - ./crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - ./crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
     container_name: ca.org2.example.com
-    networks:
-      - byfn
-
-  ca.org3.example.com:
-    image: hyperledger/fabric-ca
-    environment:
-      - FABRIC_CA_SERVER_TLS_ENABLED=true
-      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=ca.org3.example.com
-      - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.example.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/ca.org3.example.com_sk
-    ports:
-      - "9054:7054"
-    command: sh -c 'fabric-ca-server start -b admin:adminpw'
-    volumes:
-      - ./crypto-config/peerOrganizations/org3.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
-    container_name: ca.org3.example.com
     networks:
       - byfn
   
@@ -77,6 +55,38 @@ services:
       file:   base/docker-compose-base.yaml
       service: orderer.example.com
     container_name: orderer.example.com
+    networks:
+      - byfn
+
+  orderer2.example.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer2.example.com
+    container_name: orderer2.example.com
+    networks:
+      - byfn
+  
+  orderer3.example.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer3.example.com
+    container_name: orderer3.example.com
+    networks:
+      - byfn
+    
+  orderer4.example.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer4.example.com
+    container_name: orderer4.example.com
+    networks:
+      - byfn
+
+  orderer5.example.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer5.example.com
+    container_name: orderer5.example.com
     networks:
       - byfn
 
@@ -112,22 +122,6 @@ services:
     networks:
       - byfn
 
-  peer0.org3.example.com:
-    container_name: peer0.org3.example.com
-    extends:
-      file:  base/docker-compose-base.yaml
-      service: peer0.org3.example.com
-    networks:
-      - byfn
-
-  peer1.org3.example.com:
-    container_name: peer1.org3.example.com
-    extends:
-      file:  base/docker-compose-base.yaml
-      service: peer1.org3.example.com
-    networks:
-      - byfn
-
   cli:
     container_name: cli
     image: hyperledger/fabric-tools:$IMAGE_TAG
@@ -137,7 +131,7 @@ services:
       - SYS_CHANNEL=$SYS_CHANNEL
       - GOPATH=/opt/gopath
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
-      # - FABRIC_LOGGING_SPEC=DEBUG
+      - FABRIC_LOGGING_SPEC=DEBUG
       - FABRIC_LOGGING_SPEC=INFO
       - CORE_PEER_ID=cli
       - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
@@ -157,14 +151,15 @@ services:
         - ./channel-artifacts:/opt/gopath/src/github.com/hyperledger/fabric/peer/channel-artifacts
     depends_on:
       - orderer.example.com
+      - orderer2.example.com
+      - orderer3.example.com
+      - orderer4.example.com
+      - orderer5.example.com
       - peer0.org1.example.com
       - peer1.org1.example.com
       - peer0.org2.example.com
       - peer1.org2.example.com
-      - peer0.org3.example.com
-      - peer1.org3.example.com
       - ca.org1.example.com
       - ca.org2.example.com
-      - ca.org3.example.com
     networks:
       - byfn

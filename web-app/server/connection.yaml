@@ -29,16 +29,6 @@ channels:
         chaincodeQuery: true
         ledgerQuery: true
         eventSource: true
-      peer0.org3.example.com:
-        endorsingPeer: true
-        chaincodeQuery: true
-        ledgerQuery: true
-        eventSource: true
-      peer1.org3.example.com:
-        endorsingPeer: true
-        chaincodeQuery: true
-        ledgerQuery: true
-        eventSource: true
 
 organizations:
   Org1:
@@ -49,7 +39,7 @@ organizations:
     certificateAuthorities:
       - ca.org1.example.com
     adminPrivateKey:
-      path: ../../first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/147eec8991f479c0c26ef4aa06d022278e3404d82e10f8e6c37b241401ab91a7_sk
+      path: ../../first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore/
     signedCert:
       path: ../../first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts/Admin@org1.example.com-cert.pem
   
@@ -61,22 +51,9 @@ organizations:
     certificateAuthorities:
       - ca.org2.example.com
     adminPrivateKey:
-      path: ../../first-network/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/952f2d0c9e1ef942e5379f87fd9c5475a0cf3832970dce19327622b6437447c8_sk
+      path: ../../first-network/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore/
     signedCert:
       path: ../../first-network/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/signcerts/Admin@org2.example.com-cert.pem
-
-  Org3:
-    mspid: Org3MSP
-    peers:
-      - peer0.org3.example.com
-      - peer1.org3.example.com
-    certificateAuthorities:
-      - ca.org3.example.com
-    adminPrivateKey:
-      path: ../../first-network/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/keystore/0080894599aeb884e9b6ea99a7a040802327239eea332c4f930ccca2e4110f44_sk
-    signedCert:
-      path: ../../first-network/crypto-config/peerOrganizations/org3.example.com/users/Admin@org3.example.com/msp/signcerts/Admin@org3.example.com-cert.pem
-
 orderers:
   orderer.example.com:
     url: grpcs://localhost:7050
@@ -146,22 +123,6 @@ peers:
     tlsCACerts:
       path: ../../first-network/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/msp/tlscacerts/tlsca.org2.example.com-cert.pem
 
-  peer0.org3.example.com:
-    url: grpcs://localhost:11051
-    grpcOptions:
-      ssl-target-name-override: peer0.org3.example.com
-      request-timeout: 120001
-    tlsCACerts:
-      path: ../../first-network/crypto-config/peerOrganizations/org3.example.com/peers/peer0.org3.example.com/msp/tlscacerts/tlsca.org3.example.com-cert.pem
-
-  peer1.org3.example.com:
-    url: grpcs://localhost:12051
-    grpcOptions:
-      ssl-target-name-override: peer1.org3.example.com
-      request-timeout: 120001
-    tlsCACerts:
-      path: ../../first-network/crypto-config/peerOrganizations/org3.example.com/peers/peer1.org3.example.com/msp/tlscacerts/tlsca.org3.example.com-cert.pem
-
 certificateAuthorities:
   ca.org1.example.com:
     url: https://localhost:7054
@@ -183,14 +144,3 @@ certificateAuthorities:
       - enrollId: admin
         enrollSecret: adminpw
     caName: ca.org2.example.com
-  ca.org3.example.com:
-    url: https://localhost:9054
-    httpOptions:
-      verify: false
-    tlsCACerts:
-      path: ../../first-network/crypto-config/peerOrganizations/org3.example.com/ca/ca.org3.example.com-cert.pem
-    registrar:
-      - enrollId: admin
-        enrollSecret: adminpw
-    caName: ca.org3.example.com
-
