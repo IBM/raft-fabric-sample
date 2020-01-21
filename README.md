@@ -135,7 +135,12 @@ is running as expected.
 ## Prerequisites
 
   - [Hyperledger Fabric 1.4 prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html) 
-  - **Tested with Node.js version 8.9.0 and npm version 6.11.3**
+  - **Tested on macOS Catalina 10.15.2 with the following versions:** (Note that your prerequisites are different if you use Windows) 
+    * Node.js version 8.9.0
+    * npm version 6.11.3
+    * Docker version 19.03.5, build 633a0ea
+    * docker-compose version 1.24.1, build 4667896b
+
 
 # Steps
 1. [Clone the repo](#step-1-clone-the-repo)
