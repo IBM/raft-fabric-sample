@@ -72,8 +72,8 @@ try to implement this algorithm in practice have difficulties fully understandin
 implementing their solution. 
 
 Enter Raft. Designed as an alternative consensus algorithm to Paxos, Raft is much easier 
-to understand, and is now used in some of the most successful software projects, such as in the
-[swarm mode in Docker](https://docs.docker.com/engine/swarm/raft/). Since the start of Hyperledger Fabric, consensus has been designed as pluggable, 
+to understand, and is now used in some of the most successful software projects, such as
+Docker. Since the start of Hyperledger Fabric, consensus has been designed as pluggable, 
 and you the developer get to choose which type of consensus your ordering nodes will use.
 Raft enables a much easier setup than Kafka, a more decentralized approach because multiple
 organizations can contribute nodes to the ordering service, and greater crash fault 
