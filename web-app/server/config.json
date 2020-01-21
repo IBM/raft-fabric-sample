@@ -2,8 +2,8 @@
     "connection_file": "connection.yaml",
     "appAdmin": "admin",
     "appAdminSecret": "adminpw",
-    "orgMSPID": "Org1MSP",
-    "caName": "ca.org1.example.com",
-    "userName": "admin",
+    "orgMSPID": "Org3MSP",
+    "caName": "ca.org3.example.com",
+    "userName": "admin3",
     "gatewayDiscovery": { "enabled": false, "asLocalhost": true }
 }

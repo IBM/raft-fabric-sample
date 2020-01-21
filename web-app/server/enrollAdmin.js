@@ -24,17 +24,21 @@ const filePath = path.join(process.cwd(), '/connection.yaml');
 let fileContents = fs.readFileSync(filePath, 'utf8');
 let connectionFile = yaml.safeLoad(fileContents);
 
+const identityName = config.userName;
+
 async function main() {
     try {
         // Create a new CA client for interacting with the CA.
         const caURL = connectionFile.certificateAuthorities[caName].url;
+        console.log(caURL)
         const ca = new FabricCAServices(caURL);
+
         // Create a new file system based wallet for managing identities.
         const walletPath = path.join(process.cwd(), 'wallet');
         const wallet = new FileSystemWallet(walletPath);
 
         // Check to see if we've already enrolled the admin user.
-        const adminExists = await wallet.exists(appAdmin);
+        const adminExists = await wallet.exists(identityName);
         if (adminExists) {
             console.log('An identity for the admin user "admin" already exists in the wallet');
             return;
@@ -44,11 +48,11 @@ async function main() {
 
         const enrollment = await ca.enroll({ enrollmentID: appAdmin, enrollmentSecret: appAdminSecret });
         const identity = X509WalletMixin.createIdentity(orgMSPID, enrollment.certificate, enrollment.key.toBytes());
-        wallet.import(appAdmin, identity);
-        console.log('msg: Successfully enrolled admin user ' + appAdmin + ' and imported it into the wallet');
+        wallet.import(identityName, identity);
+        console.log('msg: Successfully enrolled admin user ' + identityName + ' and imported it into the wallet');
 
     } catch (error) {
-        console.error(`Failed to enroll admin user: ${appAdmin} ${error}`);
+        console.error(`Failed to enroll admin user: ${identityName} ${error}`);
         process.exit(1);
     }
 }
