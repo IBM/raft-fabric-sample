@@ -135,6 +135,7 @@ is running as expected.
 ## Prerequisites
 
   - [Hyperledger Fabric 1.4 prerequisites](https://hyperledger-fabric.readthedocs.io/en/release-1.4/prereqs.html) 
+  - **Tested with Node.js version 8.9.0 and npm version 6.11.3**
 
 # Steps
 1. [Clone the repo](#step-1-clone-the-repo)
