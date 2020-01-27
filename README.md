@@ -151,9 +151,13 @@ is running as expected.
 6. [Start the Fabcar web app](#step-6-start-the-Fabcar-web-app)
 7. [Test the network - crash the ordering nodes](#step-7-Test-the-network---crash-the-ordering-nodes)
 
+### (If you are using a Linux-based system, see steps below)
+Go down to the [for Linux Users](https://github.com/IBM/raft-fabric-sample#for-Linux-users) section below.
+
 ## Step 1. Clone the repo
 
 **Note: This repo is 78MB. May take some time to clone.**
+
 
 Clone this repo by issuing the following command in Terminal. Next, navigate to the newly cloned folder.
 
@@ -488,6 +492,57 @@ blockchain use case, and why it is useful in the first place.
 
 If you enjoyed this pattern, please give it a star, since that will help us cater our 
 content in the future to your needs. Thanks :) 
+
+## For Linux users
+Since Hyperledger Fabric has platform-specific binaries, like cryptogen, if you are 
+using a Linux-based system, you will have to take a couple additional steps to ensure 
+that the certificates are being generated properly. 
+
+1. Create a new directory, somewhere to keep both the `fabric-samples` repo, and the 
+`raft-fabric-sample` repo:
+
+```
+$ mkdir fabric-repo
+```
+
+2. Go into your newly created repo, and download the latest production release from 
+Fabric. If you have any errors downloading the binaries, you may need to install [wget](https://www.gnu.org/software/wget/)
+on your system.
+
+```
+$ cd fabric-repo
+fabric-repo$ curl -sSL http://bit.ly/2ysbOFE | bash -s
+```
+
+3. After the downloads are complete, you should see a newly created `fabric-samples` repo.
+Next, let's go ahead and clone the `raft-fabric-sample` repo.
+
+```
+fabric-repo$ git clone https://github.com/IBM/raft-fabric-sample.git
+```
+
+4. Delete the first-network folder from the fabric-samples repo.
+
+```
+fabric-repo$ rm -rf fabric-samples/first-network/
+```
+
+5. Copy and paste the `first-network` folder from `raft-fabric-samples` into your 
+`fabric-samples` folder. This is because the `raft-fabric-samples` repo uses a modified 
+`first-network` structure, which ensures we can create certificate authorities for our app, later on.
+
+```
+fabric-repo$ mkdir fabric-samples/first-network && cp -r raft-fabric-sample/first-network/ fabric-samples/first-network
+```
+
+6. Copy and paste the `web-app` folder from `raft-fabric-samples` into your 
+`fabric-samples` folder.
+```
+fabric-repo$ mkdir fabric-samples/web-app && cp -r raft-fabric-sample/web-app/ fabric-samples/web-app
+```
+
+Now, you've downloaded the binaries needed to run this code sample, and have the front end web-app to 
+go along with it. Go ahead and follow the pattern from [step 2](https://github.com/IBM/raft-fabric-sample#step-2-optional-clean-your-docker-images) above. 
 
 ## Extending the code pattern
 To make the network even more distributed, you could always add more ordering nodes, peers, 
