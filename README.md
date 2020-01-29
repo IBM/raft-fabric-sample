@@ -556,7 +556,7 @@ fabric-repo$ cd fabric-samples/first-network
 ```
 
 Now, you've downloaded the binaries needed to run this code sample, and have the front end web-app to 
-go along with it. Go ahead and follow the pattern from [step 2](https://github.com/IBM/raft-fabric-sample#step-2-optional-clean-your-docker-images) above. 
+go along with it. Go ahead and follow the pattern from [step 2](https://github.com/IBM/raft-fabric-sample#step-2-optional-clean-your-docker-images) above, starting with the `byfn` command, since you are already in the `first-network` repo. 
 
 
 
