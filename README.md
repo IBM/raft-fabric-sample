@@ -532,17 +532,33 @@ fabric-repo$ rm -rf fabric-samples/first-network/
 `first-network` structure, which ensures we can create certificate authorities for our app, later on.
 
 ```
-fabric-repo$ mkdir fabric-samples/first-network && cp -r raft-fabric-sample/first-network/ fabric-samples/first-network
+fabric-repo$ mkdir fabric-samples/first-network && cp -r raft-fabric-sample/first-network/ fabric-samples/
 ```
 
 6. Copy and paste the `web-app` folder from `raft-fabric-samples` into your 
 `fabric-samples` folder.
 ```
-fabric-repo$ mkdir fabric-samples/web-app && cp -r raft-fabric-sample/web-app/ fabric-samples/web-app
+fabric-repo$ mkdir fabric-samples/web-app && cp -r raft-fabric-sample/web-app/ fabric-samples/
+```
+
+7. Remove the `raft-fabric-samples` repo since we wont be needed it anymore. We will be running 
+all commands from the `fabric-samples` repo.
+
+```
+fabric-repo$ rm -rf raft-fabric-samples
+```
+
+8. Go into fabric-samples/first-network, and run all the commands starting from step 2. Remember
+that our root directory is now `fabric-samples` instead of `raft-fabric-sample.`
+
+```
+fabric-repo$ cd fabric-samples/first-network
 ```
 
 Now, you've downloaded the binaries needed to run this code sample, and have the front end web-app to 
 go along with it. Go ahead and follow the pattern from [step 2](https://github.com/IBM/raft-fabric-sample#step-2-optional-clean-your-docker-images) above. 
+
+
 
 ## Extending the code pattern
 To make the network even more distributed, you could always add more ordering nodes, peers, 
