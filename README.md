@@ -515,49 +515,34 @@ fabric-repo$ curl -sSL http://bit.ly/2ysbOFE | bash -s
 ```
 
 3. After the downloads are complete, you should see a newly created `fabric-samples` repo.
-Next, let's go ahead and clone the `raft-fabric-sample` repo.
+Next, let's go ahead and clone the `raft-fabric-sample` repo and then cd into it.
 
 ```
 fabric-repo$ git clone https://github.com/IBM/raft-fabric-sample.git
+fabric-repo$ cd raft-fabric-sample
 ```
 
-4. Delete the first-network folder from the fabric-samples repo.
+4. Remove the bin folder from raft-fabric-samples (since it assumes platform binaries that are made for MacOS).
 
 ```
-fabric-repo$ rm -rf fabric-samples/first-network/
+fabric-repo/raft-fabric-sample$ rm -rf bin/
 ```
 
-5. Copy and paste the `first-network` folder from `raft-fabric-samples` into your 
-`fabric-samples` folder. This is because the `raft-fabric-samples` repo uses a modified 
-`first-network` structure, which ensures we can create certificate authorities for our app, later on.
+5. Copy the `bin` folder from `fabric-samples`, and paste it into the `raft-fabric-sample` folder
 
 ```
-fabric-repo$ mkdir fabric-samples/first-network && cp -r raft-fabric-sample/first-network/ fabric-samples/
+fabric-repo/raft-fabric-sample$ mkdir bin && cp -r ../fabric-samples/bin/ .
 ```
 
-6. Copy and paste the `web-app` folder from `raft-fabric-samples` into your 
-`fabric-samples` folder.
-```
-fabric-repo$ mkdir fabric-samples/web-app && cp -r raft-fabric-sample/web-app/ fabric-samples/
-```
-
-7. Remove the `raft-fabric-samples` repo since we wont be needed it anymore. We will be running 
-all commands from the `fabric-samples` repo.
+6. If you do a ls in your `bin` folder within your `raft-fabric-sample`, you should see the following:
 
 ```
-fabric-repo$ rm -rf raft-fabric-samples
-```
-
-8. Go into fabric-samples/first-network, and run all the commands starting from step 2. Remember
-that our root directory is now `fabric-samples` instead of `raft-fabric-sample.`
-
-```
-fabric-repo$ cd fabric-samples/first-network
+fabric-repo/raft-fabric-sample/bin$ ls
+configtxgen  configtxlator  cryptogen  discover  fabric-ca-client  fabric-ca-server  idemixgen  orderer  peer
 ```
 
 Now, you've downloaded the binaries needed to run this code sample, and have the front end web-app to 
 go along with it. Go ahead and follow the pattern from [step 2](https://github.com/IBM/raft-fabric-sample#step-2-optional-clean-your-docker-images) above, starting with the `byfn` command, since you are already in the `first-network` repo. 
-
 
 
 ## Extending the code pattern
