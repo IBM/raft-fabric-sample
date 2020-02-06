@@ -511,7 +511,7 @@ on your system.
 
 ```
 $ cd fabric-repo
-fabric-repo$ curl -sSL http://bit.ly/2ysbOFE | bash -s
+fabric-repo$ curl -sSL http://bit.ly/2ysbOFE | bash -s -- 1.4.4 1.4.4 0.4.18
 ```
 
 3. After the downloads are complete, you should see a newly created `fabric-samples` repo.
