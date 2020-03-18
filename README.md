@@ -102,7 +102,7 @@ When the reader has completed this code pattern, they will understand how to:
 <br>
 <p align="center">
 
-![flowDiagram](https://user-images.githubusercontent.com/10428517/71922429-ba81f080-313f-11ea-9884-f58064b26493.png)
+![flowDiagram](https://user-images.githubusercontent.com/10428517/77009864-e8489a00-6925-11ea-83ee-166d379e9534.png)
 
 </p>
 <br>
