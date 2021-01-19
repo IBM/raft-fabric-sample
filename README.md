@@ -1,3 +1,7 @@
+# WARNING: This repository is no longer maintained :warning:
+
+> This repository will not be updated. I will check periodically for pull requests, but do not expect a quick response. 
+
 **This code pattern uses only free, open-source technologies.**
 
 # Build and run a smart contract on a Hyperledger Fabric network with the Raft ordering service.
